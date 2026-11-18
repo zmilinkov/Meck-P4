@@ -17,11 +17,11 @@
 auto IIC_Bus = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(XL9535_SDA, XL9535_SCL, I2C_NUM_0);
 
 auto SDIO_Bus = std::make_shared<Cpp_Bus_Driver::Hardware_Sdio>(ESP32C6_SDIO_CLK, ESP32C6_SDIO_CMD,
-                                                                ESP32C6_SDIO_D0, ESP32C6_SDIO_D1, ESP32C6_SDIO_D2, ESP32C6_SDIO_D3, DEFAULT_CPP_BUS_DRIVER_VALUE,
-                                                                DEFAULT_CPP_BUS_DRIVER_VALUE, DEFAULT_CPP_BUS_DRIVER_VALUE, DEFAULT_CPP_BUS_DRIVER_VALUE,
+                                                                ESP32C6_SDIO_D0, ESP32C6_SDIO_D1, ESP32C6_SDIO_D2, ESP32C6_SDIO_D3, CPP_BUS_DRIVER_DEFAULT_VALUE,
+                                                                CPP_BUS_DRIVER_DEFAULT_VALUE, CPP_BUS_DRIVER_DEFAULT_VALUE, CPP_BUS_DRIVER_DEFAULT_VALUE,
                                                                 Cpp_Bus_Driver::Hardware_Sdio::Sdio_Port::SLOT_1);
 
-auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus, XL9535_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus, XL9535_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 auto ESP32C6_AT = std::make_unique<Cpp_Bus_Driver::Esp_At>(SDIO_Bus,
                                                            [](bool value) -> IRAM_ATTR void

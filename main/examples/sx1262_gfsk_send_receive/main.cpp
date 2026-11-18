@@ -23,7 +23,7 @@ size_t Cycle_Time = 0;
 
 auto IIC_Bus_0 = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(IIC_1_SDA, IIC_1_SCL, I2C_NUM_0);
 
-auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus_0, XL9535_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus_0, XL9535_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 auto SPI_Bus_2 = std::make_shared<Cpp_Bus_Driver::Hardware_Spi>(SX1262_MOSI, SX1262_SCLK, SX1262_MISO, SPI2_HOST, 0);
 
@@ -34,7 +34,7 @@ auto SPI_Bus_2 = std::make_shared<Cpp_Bus_Driver::Hardware_Spi>(SX1262_MOSI, SX1
 // }
 
 auto SX1262 = std::make_unique<Cpp_Bus_Driver::Sx126x>(SPI_Bus_2, Cpp_Bus_Driver::Sx126x::Chip_Type::SX1262, SX1262_BUSY,
-                                                       SX1262_CS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+                                                       SX1262_CS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 extern "C" void app_main(void)
 {

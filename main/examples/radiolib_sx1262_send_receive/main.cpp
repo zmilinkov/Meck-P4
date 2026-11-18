@@ -22,7 +22,7 @@ auto IIC_Bus_0 = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(XL9535_SDA, XL
 
 auto SPI_Bus_2 = std::make_shared<Cpp_Bus_Driver::Hardware_Spi>(SX1262_MOSI, SX1262_SCLK, SX1262_MISO, SPI2_HOST, 0);
 
-auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus_0, XL9535_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus_0, XL9535_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 RadioLibHal *Radiolib_Hal = new Radiolib_Cpp_Bus_Driver_Hal(SPI_Bus_2, 10000000, SX1262_CS);
 SX1262 Sx1262 = new Module(Radiolib_Hal, static_cast<uint32_t>(RADIOLIB_NC), static_cast<uint32_t>(RADIOLIB_NC), static_cast<uint32_t>(RADIOLIB_NC), SX1262_BUSY);

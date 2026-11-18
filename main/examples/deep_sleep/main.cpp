@@ -73,27 +73,27 @@ auto L76K_Uart_Bus = std::make_shared<Cpp_Bus_Driver::Hardware_Uart>(GPS_RX, GPS
 
 // SDIO
 auto ESP32C6_AT_SDIO_Bus = std::make_shared<Cpp_Bus_Driver::Hardware_Sdio>(ESP32C6_SDIO_CLK, ESP32C6_SDIO_CMD,
-                                                                           ESP32C6_SDIO_D0, ESP32C6_SDIO_D1, ESP32C6_SDIO_D2, ESP32C6_SDIO_D3, DEFAULT_CPP_BUS_DRIVER_VALUE,
-                                                                           DEFAULT_CPP_BUS_DRIVER_VALUE, DEFAULT_CPP_BUS_DRIVER_VALUE, DEFAULT_CPP_BUS_DRIVER_VALUE,
+                                                                           ESP32C6_SDIO_D0, ESP32C6_SDIO_D1, ESP32C6_SDIO_D2, ESP32C6_SDIO_D3, CPP_BUS_DRIVER_DEFAULT_VALUE,
+                                                                           CPP_BUS_DRIVER_DEFAULT_VALUE, CPP_BUS_DRIVER_DEFAULT_VALUE, CPP_BUS_DRIVER_DEFAULT_VALUE,
                                                                            Cpp_Bus_Driver::Hardware_Sdio::Sdio_Port::SLOT_1);
 
 // SPI
 auto SX1262_SPI_Bus = std::make_shared<Cpp_Bus_Driver::Hardware_Spi>(SX1262_MOSI, SX1262_SCLK, SX1262_MISO, SPI3_HOST, 0);
 
 // IIC 1
-auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(XL9535_IIC_Bus, XL9535_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(XL9535_IIC_Bus, XL9535_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 auto BQ27220 = std::make_unique<Cpp_Bus_Driver::Bq27220xxxx>(BQ27220_IIC_Bus, BQ27220_IIC_ADDRESS);
-auto PCF8563 = std::make_unique<Cpp_Bus_Driver::Pcf8563x>(PCF8563_IIC_Bus, PCF8563_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto PCF8563 = std::make_unique<Cpp_Bus_Driver::Pcf8563x>(PCF8563_IIC_Bus, PCF8563_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 // IIC 2
-auto SGM38121 = std::make_unique<Cpp_Bus_Driver::Sgm38121>(SGM38121_IIC_Bus, SGM38121_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
-auto AW86224 = std::make_unique<Cpp_Bus_Driver::Aw862xx>(AW86224_IIC_Bus, AW86224_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
-auto ES8311 = std::make_unique<Cpp_Bus_Driver::Es8311>(ES8311_IIC_Bus, ES8311_IIS_Bus, ES8311_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto SGM38121 = std::make_unique<Cpp_Bus_Driver::Sgm38121>(SGM38121_IIC_Bus, SGM38121_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
+auto AW86224 = std::make_unique<Cpp_Bus_Driver::Aw862xx>(AW86224_IIC_Bus, AW86224_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
+auto ES8311 = std::make_unique<Cpp_Bus_Driver::Es8311>(ES8311_IIC_Bus, ES8311_IIS_Bus, ES8311_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 auto ICM20948 = std::make_unique<ICM20948_WE>(&Wire1, ICM20948_IIC_ADDRESS);
 
 // UART
 auto L76K = std::make_unique<Cpp_Bus_Driver::L76k>(L76K_Uart_Bus, [](bool Value) -> IRAM_ATTR bool
-                                                   { return XL9535->pin_write(XL9535_GPS_WAKE_UP, static_cast<Cpp_Bus_Driver::Xl95x5::Value>(Value)); }, DEFAULT_CPP_BUS_DRIVER_VALUE);
+                                                   { return XL9535->pin_write(XL9535_GPS_WAKE_UP, static_cast<Cpp_Bus_Driver::Xl95x5::Value>(Value)); }, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 // SDIO
 auto ESP32C6_AT = std::make_unique<Cpp_Bus_Driver::Esp_At>(ESP32C6_AT_SDIO_Bus,
@@ -105,21 +105,21 @@ auto ESP32C6_AT = std::make_unique<Cpp_Bus_Driver::Esp_At>(ESP32C6_AT_SDIO_Bus,
 
 // SPI
 auto SX1262 = std::make_unique<Cpp_Bus_Driver::Sx126x>(SX1262_SPI_Bus, Cpp_Bus_Driver::Sx126x::Chip_Type::SX1262, SX1262_BUSY,
-                                                       SX1262_CS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+                                                       SX1262_CS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 auto ESP32P4 = std::make_unique<Cpp_Bus_Driver::Tool>();
 
 #if defined CONFIG_SCREEN_TYPE_HI8561
 auto HI8561_T_IIC_Bus = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(HI8561_TOUCH_SDA, HI8561_TOUCH_SCL, I2C_NUM_0);
 
-auto HI8561_T = std::make_unique<Cpp_Bus_Driver::Hi8561_Touch>(HI8561_T_IIC_Bus, HI8561_TOUCH_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto HI8561_T = std::make_unique<Cpp_Bus_Driver::Hi8561_Touch>(HI8561_T_IIC_Bus, HI8561_TOUCH_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 #elif defined CONFIG_SCREEN_TYPE_RM69A10
 
 auto GT9895_IIC_Bus = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(GT9895_TOUCH_SDA, GT9895_TOUCH_SCL, I2C_NUM_0);
 
 auto GT9895 = std::make_unique<Cpp_Bus_Driver::Gt9895>(GT9895_IIC_Bus, GT9895_IIC_ADDRESS, GT9895_X_SCALE_FACTOR, GT9895_Y_SCALE_FACTOR,
-                                                       DEFAULT_CPP_BUS_DRIVER_VALUE);
+                                                       CPP_BUS_DRIVER_DEFAULT_VALUE);
 #else
 #error "unknown macro definition, please select the correct macro definition."
 #endif
@@ -884,7 +884,7 @@ extern "C" void app_main(void)
 #if defined USE_SCREEN
 #if defined CONFIG_SCREEN_TYPE_HI8561
     // 这个必须放在以太网后面
-    ESP32P4->create_pwm(HI8561_SCREEN_BL, ledc_channel_t::LEDC_CHANNEL_0, 2000);
+    ESP32P4->create_pwm(HI8561_SCREEN_BL, ledc_timer_t::LEDC_TIMER_0, ledc_channel_t::LEDC_CHANNEL_0, 2000);
 
 #elif defined CONFIG_SCREEN_TYPE_RM69A10
 #else

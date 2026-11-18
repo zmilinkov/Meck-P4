@@ -18,7 +18,7 @@ volatile bool Interrupt_Flag = false;
 
 auto IIC_Bus = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(XL9555_SDA, XL9555_SCL, I2C_NUM_0);
 
-auto XL9555 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus, XL9555_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto XL9555 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus, XL9555_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 extern "C" void app_main(void)
 {

@@ -17,12 +17,12 @@
 auto XL9535_Bus = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(XL9535_SDA, XL9535_SCL, I2C_NUM_0);
 auto BQ27220_Bus = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(BQ27220_SDA, BQ27220_SCL, I2C_NUM_0);
 
-auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(XL9535_Bus, XL9535_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(XL9535_Bus, XL9535_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 auto BQ27220 = std::make_unique<Cpp_Bus_Driver::Bq27220xxxx>(BQ27220_Bus, BQ27220_IIC_ADDRESS);
 
 // auto IIC_Bus_0 = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_2>(IIC_1_SDA, IIC_1_SCL, I2C_NUM_0);
 
-// auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus_0, XL9535_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+// auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus_0, XL9535_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 // auto BQ27220 = std::make_unique<Cpp_Bus_Driver::Bq27220xxxx>(IIC_Bus_0, BQ27220_IIC_ADDRESS);
 
 // void Iic_Scan(void)

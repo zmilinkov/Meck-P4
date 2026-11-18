@@ -37,7 +37,7 @@ esp_lcd_panel_handle_t Screen_Mipi_Dpi_Panel = NULL;
 
 auto IIC_Bus_0 = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(XL9535_SDA, XL9535_SCL, I2C_NUM_0);
 
-auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus_0, XL9535_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus_0, XL9535_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 auto ESP32P4 = std::make_unique<Cpp_Bus_Driver::Tool>();
 
@@ -414,7 +414,7 @@ extern "C" void app_main(void)
     vTaskDelay(pdMS_TO_TICKS(200));
 
 #if defined CONFIG_SCREEN_TYPE_HI8561
-    ESP32P4->create_pwm(HI8561_SCREEN_BL, ledc_channel_t::LEDC_CHANNEL_0, 2000);
+    ESP32P4->create_pwm(HI8561_SCREEN_BL, ledc_timer_t::LEDC_TIMER_0, ledc_channel_t::LEDC_CHANNEL_0, 2000);
 
 #elif defined CONFIG_SCREEN_TYPE_RM69A10
 #else

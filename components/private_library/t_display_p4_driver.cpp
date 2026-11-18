@@ -34,7 +34,7 @@ bool Mipi_Dsi_Init(uint8_t num_data_lanes, uint32_t lane_bit_rate_mbps, uint32_t
         .bus_id = 0,
         .num_data_lanes = num_data_lanes,
         .phy_clk_src = MIPI_DSI_PHY_CLK_SRC_DEFAULT,
-        .lane_bit_rate_mbps = lane_bit_rate_mbps,
+        .lane_bit_rate_mbps = static_cast<float>(lane_bit_rate_mbps),
     };
 
     esp_err_t assert = esp_lcd_new_dsi_bus(&bus_config, &mipi_dsi_bus);
@@ -60,7 +60,7 @@ bool Mipi_Dsi_Init(uint8_t num_data_lanes, uint32_t lane_bit_rate_mbps, uint32_t
     esp_lcd_dpi_panel_config_t dpi_config = {
         .virtual_channel = 0,
         .dpi_clk_src = MIPI_DSI_DPI_CLK_SRC_DEFAULT,
-        .dpi_clock_freq_mhz = dpi_clock_freq_mhz,
+        .dpi_clock_freq_mhz = static_cast<float>(dpi_clock_freq_mhz),
         .pixel_format = color_rgb_pixel_format,
         .num_fbs = num_fbs,
         .video_timing = {

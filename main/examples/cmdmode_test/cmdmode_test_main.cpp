@@ -49,7 +49,7 @@ static esp_lcd_panel_io_handle_t s_dbi = NULL;
 static uint8_t s_px[CHUNK_BYTES];
 
 static auto IIC_Bus_0 = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(XL9535_SDA, XL9535_SCL, I2C_NUM_0);
-static auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus_0, XL9535_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+static auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus_0, XL9535_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 // ------------- monitored tx/rx machinery (proven) -------------
 struct Job { uint8_t cmd; const uint8_t *wbuf; uint8_t *rbuf; size_t n; bool read; esp_err_t err; };

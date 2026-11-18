@@ -61,7 +61,7 @@ auto IIC_Bus_0 = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(XL9555_SDA, XL
 
 auto SPI_Bus_2 = std::make_shared<Cpp_Bus_Driver::Hardware_Spi>(T_MIXRF_NRF24L01_MOSI, T_MIXRF_NRF24L01_SCLK, T_MIXRF_NRF24L01_MISO, SPI2_HOST, 0);
 
-auto XL9555 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus_0, XL9555_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto XL9555 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus_0, XL9555_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 RadioLibHal *Radiolib_Hal = new Radiolib_Cpp_Bus_Driver_Hal(SPI_Bus_2, 10000000, T_MIXRF_NRF24L01_CS);
 nRF24 Nrf24l01 = new Module(Radiolib_Hal, static_cast<uint32_t>(RADIOLIB_NC),

@@ -17,9 +17,9 @@
 auto IIC_Bus_0 = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(IIC_1_SDA, IIC_1_SCL, I2C_NUM_0);
 auto IIC_Bus_0_1 = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(IIC_1_SDA, IIC_1_SCL, I2C_NUM_0);
 
-auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus_0, XL9535_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(IIC_Bus_0, XL9535_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
-auto PCF8563 = std::make_unique<Cpp_Bus_Driver::Pcf8563x>(IIC_Bus_0_1, PCF8563_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto PCF8563 = std::make_unique<Cpp_Bus_Driver::Pcf8563x>(IIC_Bus_0_1, PCF8563_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 volatile bool Interrupt_Flag = false;
 

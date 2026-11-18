@@ -53,21 +53,21 @@ lv_point_t point;
 
 auto XL9535_Bus = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(XL9535_SDA, XL9535_SCL, I2C_NUM_0);
 
-auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(XL9535_Bus, XL9535_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(XL9535_Bus, XL9535_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 auto ESP32P4 = std::make_unique<Cpp_Bus_Driver::Tool>();
 
 #if defined CONFIG_SCREEN_TYPE_HI8561
 auto HI8561_T_Bus = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(HI8561_TOUCH_SDA, HI8561_TOUCH_SCL, I2C_NUM_0);
 
-auto HI8561_T = std::make_unique<Cpp_Bus_Driver::Hi8561_Touch>(HI8561_T_Bus, HI8561_TOUCH_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto HI8561_T = std::make_unique<Cpp_Bus_Driver::Hi8561_Touch>(HI8561_T_Bus, HI8561_TOUCH_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 #elif defined CONFIG_SCREEN_TYPE_RM69A10
 
 auto GT9895_Bus = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(GT9895_TOUCH_SDA, GT9895_TOUCH_SCL, I2C_NUM_0);
 
 auto GT9895 = std::make_unique<Cpp_Bus_Driver::Gt9895>(GT9895_Bus, GT9895_IIC_ADDRESS, GT9895_X_SCALE_FACTOR, GT9895_Y_SCALE_FACTOR,
-                                                       DEFAULT_CPP_BUS_DRIVER_VALUE);
+                                                       CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 #else
 #error "unknown macro definition, please select the correct macro definition."
@@ -395,7 +395,7 @@ extern "C" void app_main(void)
     }
 
 #if defined CONFIG_SCREEN_TYPE_HI8561
-    ESP32P4->create_pwm(HI8561_SCREEN_BL, ledc_channel_t::LEDC_CHANNEL_0, 2000);
+    ESP32P4->create_pwm(HI8561_SCREEN_BL, ledc_timer_t::LEDC_TIMER_0, ledc_channel_t::LEDC_CHANNEL_0, 2000);
 
     HI8561_T_Bus->set_bus_handle(XL9535_Bus->get_bus_handle());
 

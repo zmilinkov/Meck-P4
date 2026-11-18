@@ -107,7 +107,7 @@
 #define MAX_GROUP_CHANNELS         20
 
 // LoRa defaults (AU_915 for Sydney)
-#define LORA_FREQ_DEFAULT          916.575
+#define LORA_FREQ_DEFAULT          868.525
 #define LORA_BW_DEFAULT            62.5
 #define LORA_SF_DEFAULT            7
 #define LORA_CR_DEFAULT            8

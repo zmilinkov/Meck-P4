@@ -94,9 +94,9 @@ public:
         _kbd_bus = std::make_shared<Cpp_Bus_Driver::Software_Iic>(TCA8418_SDA, TCA8418_SCL);
 
         _xl  = std::make_unique<Cpp_Bus_Driver::Xl95x5>(
-                   _xl_bus,  XL9555_IIC_ADDRESS,  DEFAULT_CPP_BUS_DRIVER_VALUE);
+                   _xl_bus,  XL9555_IIC_ADDRESS,  CPP_BUS_DRIVER_DEFAULT_VALUE);
         _kbd = std::make_unique<Cpp_Bus_Driver::Tca8418>(
-                   _kbd_bus, TCA8418_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+                   _kbd_bus, TCA8418_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
         if (_xl->begin() == false) {
             printf("[P4KBD] no XL9555 at 0x%02X - keyboard not attached\n",
@@ -106,7 +106,7 @@ public:
 
         // The TCA8418 reset line hangs off expander IO6, not off a P4 GPIO, so
         // the chip driver's own _rst path cannot reach it (hence the
-        // DEFAULT_CPP_BUS_DRIVER_VALUE above). Pulse it by hand before
+        // CPP_BUS_DRIVER_DEFAULT_VALUE above). Pulse it by hand before
         // starting the controller.
         _xl->pin_mode(XL9555_TCA8418_RST, Cpp_Bus_Driver::Xl95x5::Mode::OUTPUT);
         _xl->pin_write(XL9555_TCA8418_RST, Cpp_Bus_Driver::Xl95x5::Value::HIGH);

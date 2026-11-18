@@ -292,4 +292,18 @@ menu "Example Configuration"
     #     default -1
     #     range -1 -1
 
+# Stubs for IDF 5.5's component manager: newer esp_hosted manifests gate
+# USB-host deps on these; the bundled esp_hosted 2.0.17 doesn't define them.
+config ESP_HOSTED_HOST_USB_CDC_ACM_MANIFEST
+    bool "Stub: USB CDC-ACM host manifest gate"
+    default n
+
+config ESP_HOSTED_HOST_USB_CHERRYUSB_MANIFEST
+    bool "Stub: CherryUSB host manifest gate"
+    default n
+
+config ESP_HOSTED_HOST_USB_RNDIS_MANIFEST
+    bool "Stub: USB RNDIS host manifest gate"
+    default n
+
 endmenu

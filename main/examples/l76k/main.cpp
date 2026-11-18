@@ -19,10 +19,10 @@ auto Iic_Bus_0 = std::make_shared<Cpp_Bus_Driver::Hardware_Iic_1>(IIC_1_SDA, IIC
 
 auto Uart_Bus_1 = std::make_shared<Cpp_Bus_Driver::Hardware_Uart>(GPS_RX, GPS_TX, UART_NUM_1);
 
-auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(Iic_Bus_0, XL9535_IIC_ADDRESS, DEFAULT_CPP_BUS_DRIVER_VALUE);
+auto XL9535 = std::make_unique<Cpp_Bus_Driver::Xl95x5>(Iic_Bus_0, XL9535_IIC_ADDRESS, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 auto L76K = std::make_unique<Cpp_Bus_Driver::L76k>(Uart_Bus_1, [](bool Value) -> IRAM_ATTR bool
-                                                   { return XL9535->pin_write(XL9535_GPS_WAKE_UP, static_cast<Cpp_Bus_Driver::Xl95x5::Value>(Value)); }, DEFAULT_CPP_BUS_DRIVER_VALUE);
+                                                   { return XL9535->pin_write(XL9535_GPS_WAKE_UP, static_cast<Cpp_Bus_Driver::Xl95x5::Value>(Value)); }, CPP_BUS_DRIVER_DEFAULT_VALUE);
 
 extern "C" void app_main(void)
 {
